@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'it.unisa'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // https://mvnrepository.com/artifact/org.repodriller/repodriller
+    implementation 'org.repodriller:repodriller:2.0.1'
+    // https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:2.2.0.201212191850-r'
+
+}
+
+test {
+    useJUnitPlatform()
+}
