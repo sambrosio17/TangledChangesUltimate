@@ -16,6 +16,8 @@ dependencies {
     implementation 'org.repodriller:repodriller:2.0.1'
     // https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit
     implementation 'org.eclipse.jgit:org.eclipse.jgit:2.2.0.201212191850-r'
+    // https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:2.2.0.201212191850-r'
 
 }
 

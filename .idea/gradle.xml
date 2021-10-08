@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Core" />
             <option value="$PROJECT_DIR$/cli" />
+            <option value="$PROJECT_DIR$/intellij--plugin" />
           </set>
         </option>
       </GradleProjectSettings>

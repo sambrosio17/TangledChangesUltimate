@@ -1,4 +1,5 @@
 rootProject.name = 'TangledChangesUltimate'
 include 'Core'
 include 'cli'
+include 'intellij--plugin'
 
