@@ -14,6 +14,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <checkinHandlerFactory implementation="CommitHandler"/>
     </extensions>
 
     <actions>

@@ -17,6 +17,7 @@ public class LocalExtractor implements Extractor{
 
     public LocalExtractor(String repoUrl){
         this.repoUrl=repoUrl;
+        commitList=new HashMap<>();
     }
 
     public HashMap<String, Commit> doExtract(){
