@@ -16,7 +16,8 @@ public class CommitHandler extends CheckinHandlerFactory {
             @Override
             public ReturnResult beforeCheckin(@Nullable CommitExecutor executor, PairConsumer<Object, Object> additionalDataConsumer) {
 
-                System.out.println("commit catturato");
+                System.out.println("commit catturato  "+commitContext.getUserDataString());
+                commitContext.getUserDataString();
 
                 return super.beforeCheckin(executor, additionalDataConsumer);
             }
