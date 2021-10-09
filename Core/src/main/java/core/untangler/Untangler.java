@@ -18,7 +18,7 @@ public class Untangler {
     private HashMap<String, core.beans.Commit> map;
     private PackageDistance packageDistance;
     private ChangeCoupling changeCoupling;
-    public List<Partition> partitionList;
+    private List<Partition> partitionList;
     private int stopCondition;
     private int startingMatrixSize=0;
 

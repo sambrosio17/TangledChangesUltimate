@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Commit extends StagedCommit{
 
-    public String id;
-    public String author;
-    public List<CommitChange> changes=new ArrayList<>();
+    private String id;
+    private String author;
+    private List<CommitChange> changes=new ArrayList<>();
 
     public Commit() {
     }

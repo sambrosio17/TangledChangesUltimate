@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StagedCommit {
 
-    public List<CommitChange> changes=new ArrayList<>();
+    private List<CommitChange> changes=new ArrayList<>();
 
     public StagedCommit(){};
 

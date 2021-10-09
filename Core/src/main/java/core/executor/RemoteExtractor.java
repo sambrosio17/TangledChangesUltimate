@@ -10,8 +10,8 @@ import java.util.HashMap;
 
 public class RemoteExtractor implements Extractor{
 
-    HashMap<String, Commit> commitList;
-    String repoUrl;
+    private HashMap<String, Commit> commitList;
+    private String repoUrl;
 
     public RemoteExtractor(String repoUrl){
         this.repoUrl=repoUrl;

@@ -2,7 +2,7 @@ package core.beans;
 
 public class CommitChange {
 
-    public String path, action;
+    private String path, action;
 
     public CommitChange() {
     }
