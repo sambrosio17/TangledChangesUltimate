@@ -15,6 +15,8 @@ import core.utils.StringCostants;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.jetbrains.annotations.NotNull;
+import window.CommitWindow;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -95,7 +97,8 @@ public class CommitHandler extends CheckinHandlerFactory {
                 System.out.println(result);
 
 
-                panel.getVirtualFiles().clear();;
+                panel.getVirtualFiles().clear();
+                new CommitWindow(panel.getProject(),result).setVisible(true);
 
                 try {
                     git.reset().call();
