@@ -19,6 +19,8 @@ public class CommitWindow extends JFrame {
             //JList<Partition> list=new JList<>();
             //list.setListData((Partition[]) partitionList.stream().toArray());
             //panel.add(list);
+            this.toFront();
+            this.setLocationRelativeTo(null);
             this.setSize(500,300);
 
             for(Partition p: partitionList){
