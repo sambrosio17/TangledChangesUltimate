@@ -1,3 +1,4 @@
+import Utils.StageExtractor;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.vcs.CheckinProjectPanel;
 import com.intellij.openapi.vcs.CommitMessageI;
@@ -29,9 +30,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 public class CommitHandler extends CheckinHandlerFactory {
-    List<Partition> result;
-    StagedCommit staged;
-    Git git;
+    private List<Partition> result;
+    private StagedCommit staged;
+    private Git git;
+    private StageExtractor stageExtractor;
+    private List<String> nonJava;
     @Override
     public @NotNull CheckinHandler createHandler(@NotNull CheckinProjectPanel panel, @NotNull CommitContext commitContext) {
 
@@ -43,54 +46,19 @@ public class CommitHandler extends CheckinHandlerFactory {
                 String repoPath = panel.getProject().getBasePath();
                 Extractor extractor = new LocalExtractor(repoPath);
                 HashMap<String, Commit> map = extractor.doExtract();
-
-                git = null;
-                try {
-
-                    git = Git.open(new File(repoPath));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    //poi faremo qualocosa
-                }
-
-                StagedCommit staged = new StagedCommit();
-
-                try {
-                    for (String path : git.status().call().getAdded()) {
-                        if (!path.contains(".java")) continue;
-                        CommitChange change = new CommitChange(path, StringCostants.ADD);
-                        staged.getChanges().add(change);
-                    }
-                    for (String path : git.status().call().getModified()) {
-                        if (!path.contains(".java")) continue;
-                        CommitChange change = new CommitChange(path, StringCostants.MODIFY);
-                        staged.getChanges().add(change);
-                    }
-
-                    for (String path : git.status().call().getRemoved()) {
-                        if (!path.contains(".java")) continue;
-                        CommitChange change = new CommitChange(path, StringCostants.REMOVE);
-                        staged.getChanges().add(change);
-                    }
-                    for (String path : git.status().call().getChanged()) {
-                        if (!path.contains(".java")) continue;
-                        CommitChange change = new CommitChange(path, StringCostants.CHANGE);
-                        staged.getChanges().add(change);
-                    }
-                } catch (GitAPIException e) {
-                    e.printStackTrace();
-                }
-
                 int stopCondition = staged.getChanges().size() / 3;
-                Untangler untangler = new Untangler(staged, map, 3);
-                List<Partition> result = null;
+                result=null;
                 try {
+                    stageExtractor=new StageExtractor(repoPath,panel);
+                    staged=stageExtractor.doExtract();
+                    nonJava=stageExtractor.doExtractNonJava();
+                    Untangler untangler = new Untangler(staged, map, 3);
                     result = untangler.doUntangle();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
+                } catch (IOException | GitAPIException e) {
                     e.printStackTrace();
                 }
+
+
 
                 System.out.println("Repository: " + repoPath);
                 //System.out.println("Commmit ID: "+commitId);
@@ -99,22 +67,10 @@ public class CommitHandler extends CheckinHandlerFactory {
                 System.out.println("Partizioni Create: " + result.size());
                 System.out.println(result);
 
-
-
-                //copio in una lista i file NON-JAVA presenti nella stage area che devono essere committati a parte
-                List<String> nonJava=new ArrayList<>();
-                for(VirtualFile vf  : panel.getVirtualFiles()){
-                    if(vf.getPath().contains(".java")) continue;
-                    nonJava.add(vf.getPath().replace(repoPath+"/",""));
-                }
-
-                panel.getVirtualFiles().clear();
                 new CommitWindow(panel.getProject(), result).setVisible(true);
 
 
                 try {
-                    //resetto la stage area
-                    git.reset().call();
                     for (Partition p : result) {
                         for (String path : p.getPaths()) {
                             CommitChange c = staged.findOne(path);
@@ -130,7 +86,6 @@ public class CommitHandler extends CheckinHandlerFactory {
                                     break;
                                 default:
                                     break;
-
                             }
                         }
                         git.commit().setMessage("N:" + new Date().toString() + p.getId()).setAuthor("sasino", "s@outlook.it").call();
@@ -141,13 +96,11 @@ public class CommitHandler extends CheckinHandlerFactory {
 
 
                 try {
-
                     //faccio commit dei file non java
                     if(!nonJava.isEmpty()){
                         //Aggiungo in un commit tutti i file non java
                         for (String s : nonJava) {
                             git.add().addFilepattern(s).call();
-
                         }
                         git.commit().setMessage("NON JAVA FILE").setAuthor("sax", "sax").call();
                     }
