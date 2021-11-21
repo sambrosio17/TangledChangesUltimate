@@ -32,7 +32,7 @@ public class Main {
         try{
             CommandLine cl= parser.parse(options,args);
             if(cl.hasOption("h")){
-                System.out.println("Usage: $programName [-h] [-s repositoryUrl commitId] [-d repositoryUrl commitId stopCondition]");
+                System.out.println("Usage: $ATaCoDe [-h] [-s repositoryUrl commitId] [-d repositoryUrl commitId stopCondition]");
                 System.out.println("\t\t\t\t\t -h --help\t\t\t\t\t\t\t\t\t\t\t\t to show help");
                 System.out.println("\t\t\t\t\t -s --show \t\trepositoryUrl commitId\t\t\t\t\t to show generic information about repositoryUrl");
                 System.out.println("\t\t\t\t\t -d --detect \trepositoryUrl commitId stopCondition\t to start detection");
