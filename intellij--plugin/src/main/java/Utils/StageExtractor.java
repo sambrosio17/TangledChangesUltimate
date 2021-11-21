@@ -13,10 +13,10 @@ import java.io.IOException;
 
 public class StageExtractor {
 
-    private CheckinProjectPanel panel;
-    private StagedCommit staged;
-    private String repoPath;
-    private Git git;
+    private final CheckinProjectPanel panel;
+    private final StagedCommit staged;
+    private final String repoPath;
+    private final Git git;
 
     public StageExtractor(String repoPath, CheckinProjectPanel panel) throws IOException {
         staged=new StagedCommit();

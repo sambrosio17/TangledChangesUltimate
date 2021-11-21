@@ -1,11 +1,10 @@
 <idea-plugin>
     <id>it.unisa.intellij--plugin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>PangeaUntangler</name>
+    <vendor email="ambrosio.s@outlook.it" url="https://sesalab.github.io/">SeSa Lab</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    Untangler is an intellij plugin which detects and resolve Tangled Changes before commit.
     ]]></description>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html

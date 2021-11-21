@@ -11,12 +11,12 @@ public class Partition {
     private List<PartitionItem> partitionItemList;
     private boolean active;
 
-    public Partition(){
-        id=-1;
-        partitionItemList=new ArrayList<>();
-        active=true;
-        generatedFrom=new ArrayList<>();
-        paths=new ArrayList<>();
+    public Partition() {
+        id = -1;
+        partitionItemList = new ArrayList<>();
+        active = true;
+        generatedFrom = new ArrayList<>();
+        paths = new ArrayList<>();
     }
 
     public int getId() {
@@ -39,8 +39,8 @@ public class Partition {
         return active;
     }
 
-    private void deactiveItem(){
-        for(PartitionItem p : partitionItemList){
+    private void deactiveItem() {
+        for (PartitionItem p : partitionItemList) {
             p.setActive(this.active);
         }
     }
@@ -50,9 +50,9 @@ public class Partition {
         deactiveItem();
     }
 
-    public void deactiveIndex(int j){
-        for(PartitionItem p : partitionItemList){
-            if(p.getJ()==j) p.setActive(false);
+    public void deactiveIndex(int j) {
+        for (PartitionItem p : partitionItemList) {
+            if (p.getJ() == j) p.setActive(false);
         }
     }
 
@@ -73,20 +73,20 @@ public class Partition {
     }
 
 
-    public PartitionItem findMax(){
+    public PartitionItem findMax() {
 
-        List<PartitionItem> actives=new ArrayList<>();
-        for(PartitionItem pItem : partitionItemList){
-            if(pItem.isActive()) actives.add(pItem);
+        List<PartitionItem> actives = new ArrayList<>();
+        for (PartitionItem pItem : partitionItemList) {
+            if (pItem.isActive()) actives.add(pItem);
         }
 
-        if(actives.isEmpty()) return null;
-        PartitionItem max=actives.get(0);
+        if (actives.isEmpty()) return null;
+        PartitionItem max = actives.get(0);
 
 
-        for(PartitionItem item : actives){
-            if(item.getConfidenceValue()> max.getConfidenceValue()){
-                max=item;
+        for (PartitionItem item : actives) {
+            if (item.getConfidenceValue() > max.getConfidenceValue()) {
+                max = item;
             }
         }
 
@@ -102,6 +102,6 @@ public class Partition {
                 ", paths=" + paths +
                 ", partitionItemList=" + partitionItemList +
                 ", active=" + active +
-                '}'+'\n';
+                '}' + '\n';
     }
 }

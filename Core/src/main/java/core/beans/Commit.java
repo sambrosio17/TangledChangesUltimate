@@ -3,11 +3,11 @@ package core.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Commit extends StagedCommit{
+public class Commit extends StagedCommit {
 
     private String id;
     private String author;
-    private List<CommitChange> changes=new ArrayList<>();
+    private List<CommitChange> changes = new ArrayList<>();
 
     public Commit() {
     }
@@ -42,7 +42,7 @@ public class Commit extends StagedCommit{
     }
 
     @Override
-    public boolean equals(Object x){
+    public boolean equals(Object x) {
         return id.equals(((Commit) x).getId());
     }
 

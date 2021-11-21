@@ -6,9 +6,9 @@ import java.util.HashMap;
 
 public interface Extractor {
 
-    public HashMap<String, Commit> doExtract();
-    public HashMap<String, Commit> getCommitList();
-    public void setCommitList(HashMap<String, Commit> commitList);
-    public String getRepoUrl();
-    public void setRepoUrl(String repoUrl);
+    HashMap<String, Commit> doExtract();
+    HashMap<String, Commit> getCommitList();
+    void setCommitList(HashMap<String, Commit> commitList);
+    String getRepoUrl();
+    void setRepoUrl(String repoUrl);
 }

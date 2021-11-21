@@ -14,12 +14,12 @@ import java.util.*;
 
 public class Untangler {
 
-    private core.beans.StagedCommit commit;
-    private HashMap<String, core.beans.Commit> map;
-    private PackageDistance packageDistance;
-    private ChangeCoupling changeCoupling;
-    private List<Partition> partitionList;
-    private int stopCondition;
+    private final core.beans.StagedCommit commit;
+    private final HashMap<String, core.beans.Commit> map;
+    private final PackageDistance packageDistance;
+    private final ChangeCoupling changeCoupling;
+    private final List<Partition> partitionList;
+    private final int stopCondition;
     private int startingMatrixSize=0;
 
     public Untangler(StagedCommit commit, HashMap<String, core.beans.Commit> map, int stopCondition){

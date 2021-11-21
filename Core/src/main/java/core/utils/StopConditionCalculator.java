@@ -2,7 +2,7 @@ package core.utils;
 
 public class StopConditionCalculator {
 
-    private int numberOfFiles;
+    private final int numberOfFiles;
 
     public StopConditionCalculator(int numberOfFiles){
         this.numberOfFiles=numberOfFiles;

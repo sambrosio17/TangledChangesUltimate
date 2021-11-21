@@ -23,12 +23,9 @@ import core.executor.RemoteExtractor;
 import core.untangler.Untangler;
 import core.utils.StopConditionCalculator;
 import core.utils.StringCostants;
-import org.eclipse.jgit.api.CheckoutCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.kotlin.ir.interpreter.Return;
-import window.CommitWindow;
 
 
 import javax.swing.*;
@@ -39,7 +36,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 public class CommitHandler extends CheckinHandlerFactory {
-    private String toolName="Untangler";
+    private final String toolName="PangeaUntangler";
     private List<Partition> result;
     private StagedCommit staged;
     private Git git;
@@ -165,7 +162,7 @@ public class CommitHandler extends CheckinHandlerFactory {
                     git.commit().setMessage(commitMessages.get(i)).setAuthor("Untangler", "info@untangler.it").call();
                 }
                 else
-                    git.commit().setMessage("UNTANGLED COMMIT #"+p.getId()+" -- "+new Date().toString()).setAuthor("Untangler", "info@untangler.it").call();
+                    git.commit().setMessage("UNTANGLED COMMIT #"+p.getId()+" -- "+ new Date()).setAuthor("Untangler", "info@untangler.it").call();
                 i++;
             }
         } catch (Exception e) {
@@ -181,7 +178,7 @@ public class CommitHandler extends CheckinHandlerFactory {
                 for (String s : nonJava) {
                     git.add().addFilepattern(s).call();
                 }
-                git.commit().setMessage("UNTANGLED COMMIT [NON JAVA FILES]"+" -- "+new Date().toString()).setAuthor("Untangler", "info@untangler.it").call();
+                git.commit().setMessage("UNTANGLED COMMIT [NON JAVA FILES]"+" -- "+ new Date()).setAuthor("Untangler", "info@untangler.it").call();
             }
 
 

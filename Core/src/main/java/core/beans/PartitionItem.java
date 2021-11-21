@@ -2,21 +2,21 @@ package core.beans;
 
 import java.util.ArrayList;
 
-public class PartitionItem implements Comparable<PartitionItem>{
+public class PartitionItem implements Comparable<PartitionItem> {
 
     private int partitionIndex;
     private boolean active;
-    private int i,j;
+    private int i, j;
     private double confidenceValue;
     private ArrayList<String> paths;
 
-    public PartitionItem(){
-        active=true;
-        i=-1;
-        j=-1;
-        partitionIndex=-1;
-        paths=new ArrayList<>();
-        confidenceValue=-1;
+    public PartitionItem() {
+        active = true;
+        i = -1;
+        j = -1;
+        partitionIndex = -1;
+        paths = new ArrayList<>();
+        confidenceValue = -1;
     }
 
     public boolean isActive() {
@@ -68,11 +68,11 @@ public class PartitionItem implements Comparable<PartitionItem>{
     }
 
     @Override
-    public boolean equals(Object x){
+    public boolean equals(Object x) {
 
-        PartitionItem p=(PartitionItem) x;
+        PartitionItem p = (PartitionItem) x;
 
-        return p.getI()==this.i && p.getJ()==this.j && p.getConfidenceValue()==this.confidenceValue;
+        return p.getI() == this.i && p.getJ() == this.j && p.getConfidenceValue() == this.confidenceValue;
     }
 
 
@@ -89,7 +89,7 @@ public class PartitionItem implements Comparable<PartitionItem>{
                 ", j=" + j +
                 ", confidenceValue=" + confidenceValue +
                 ", paths=" + paths +
-                '}'+'\n';
+                '}' + '\n';
     }
 
 

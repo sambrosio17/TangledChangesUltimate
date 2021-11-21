@@ -22,13 +22,13 @@ import java.util.Locale;
 
 public class CommitWindow extends JFrame {
 
-    private CommitWindow frame;
-    private CommitHandler c;
-    private Project project;
-    private List<Partition> list;
+    private final CommitWindow frame;
+    private final CommitHandler c;
+    private final Project project;
+    private final List<Partition> list;
     private JButton buttonPositive;
     private JButton buttonNegative;
-    private ArrayList<JTextArea> textAreaList;
+    private final ArrayList<JTextArea> textAreaList;
 
     public CommitWindow(Project project, List<Partition> partitionList, CheckinHandlerFactory c){
         //super("Untangler | Detection");
@@ -90,7 +90,7 @@ public class CommitWindow extends JFrame {
                 JLabel item = new JLabel("  path: "+path);
                 innerPanel.add(item);
             }
-            JTextArea textArea=new JTextArea("UNTANGLED COMMIT #"+p.getId()+" -- "+new Date().toString());
+            JTextArea textArea=new JTextArea("UNTANGLED COMMIT #"+p.getId()+" -- "+ new Date());
             textArea.setEditable(true);
             textAreaList.add(textArea);
             JPanel textAreaPanel=new JPanel();
